@@ -1,0 +1,508 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALIGNMENT	alloc.c	6;"	d	file:
+ALLOC_H	alloc.h	2;"	d
+AUTO_HOME_H	auto_home.h	2;"	d
+AUTO_QMAIL_H	auto_qmail.h	2;"	d
+BYTE_H	byte.h	2;"	d
+CALDATE_H	caldate.h	2;"	d
+CALTIME_H	caltime.h	2;"	d
+CASE_H	case.h	2;"	d
+CONFIG_H	config.h	2;"	d
+CONFIG_STR	config.h	11;"	d
+DATETIME_H	datetime.h	2;"	d
+DIRENTRY_H	direntry.h	2;"	d
+ENV_H	env.h	2;"	d
+ERROR_H	error.h	2;"	d
+EXIT_H	exit.h	2;"	d
+FATAL	install.c	10;"	d	file:
+FATAL	instcheck.c	10;"	d	file:
+FATAL	maildirserial.c	27;"	d	file:
+FATAL	serialqmtp.c	21;"	d	file:
+FATAL	serialsmtp.c	18;"	d	file:
+FATAL	setlock.c	7;"	d	file:
+FD_H	fd.h	2;"	d
+FMT_H	fmt.h	2;"	d
+FMT_LEN	fmt.h	5;"	d
+FMT_ULONG	fmt.h	4;"	d
+FORK_H	fork.h	2;"	d
+GEN_ALLOC_DEFS_H	gen_allocdefs.h	2;"	d
+GEN_ALLOC_H	gen_alloc.h	2;"	d
+GEN_ALLOC_append	gen_allocdefs.h	30;"	d
+GEN_ALLOC_ready	gen_allocdefs.h	4;"	d
+GEN_ALLOC_readyplus	gen_allocdefs.h	17;"	d
+GEN_ALLOC_typedef	gen_alloc.h	4;"	d
+GETLN_H	getln.h	2;"	d
+HASFLOCK	hasflock.h	1;"	d
+HASSIGACTION	hassgact.h	1;"	d
+HASWAITPID	haswaitp.h	1;"	d
+INFO	maildirserial.c	29;"	d	file:
+LEAPSECS_H	leapsecs.h	2;"	d
+LOCK_H	lock.h	2;"	d
+MAILDIR_H	maildir.h	2;"	d
+MESS822_H	mess822.h	2;"	d
+MESS822_HEADER	mess822.h	26;"	d
+NOW_H	now.h	2;"	d
+OPEN_H	open.h	2;"	d
+PRIOQ_H	prioq.h	2;"	d
+QMAIL_H	qmail.h	2;"	d
+QUOTE_H	quote.h	2;"	d
+READWRITE_H	readwrite.h	2;"	d
+SCAN_H	scan.h	2;"	d
+SELECT_H	select.h	2;"	d
+SGETOPTNOSHORT	sgetopt.c	14;"	d	file:
+SGETOPT_H	sgetopt.h	2;"	d
+SHELL	Makefile	/^SHELL=\/bin\/sh$/;"	m
+SIG_H	sig.h	2;"	d
+SPACE	alloc.c	7;"	d	file:
+STRALLOC_H	stralloc.h	2;"	d
+STRERR	strerr.h	20;"	d
+STRERR_H	strerr.h	2;"	d
+STRERR_SYS	strerr.h	23;"	d
+STRERR_SYS3	strerr.h	25;"	d
+STR_H	str.h	2;"	d
+SUBFD_H	subfd.h	2;"	d
+SUBGETOPTDONE	subgetopt.h	14;"	d
+SUBGETOPTNOSHORT	sgetopt.c	16;"	d	file:
+SUBGETOPTNOSHORT	subgetopt.c	12;"	d	file:
+SUBGETOPT_H	subgetopt.h	2;"	d
+SUBSTDIO_FDBUF	substdio.h	12;"	d
+SUBSTDIO_H	substdio.h	2;"	d
+SUBSTDIO_INSIZE	substdio.h	33;"	d
+SUBSTDIO_OUTSIZE	substdio.h	34;"	d
+TAI_H	tai.h	2;"	d
+TAI_PACK	tai.h	18;"	d
+TIMEOUTREAD_H	timeoutread.h	2;"	d
+TIMEOUTWRITE_H	timeoutwrite.h	2;"	d
+UINT64_H	uint64.h	2;"	d
+WAIT_H	wait.h	2;"	d
+WARNING	instcheck.c	11;"	d	file:
+WARNING	maildirserial.c	28;"	d	file:
+X	error_str.c	4;"	d	file:
+action	mess822.h	/^  mess822_action *action;$/;"	m	struct:__anon5
+addr	mess822.h	/^  stralloc *addr;$/;"	m	struct:__anon4
+aligned	alloc.c	/^typedef union { char irrelevant[ALIGNMENT]; double d; } aligned;$/;"	t	typeref:union:__anon1	file:
+alloc	alloc.c	/^\/*@null@*\/\/*@out@*\/char *alloc(n)$/;"	f
+alloc_free	alloc.c	/^void alloc_free(x)$/;"	f
+alloc_re	alloc_re.c	/^int alloc_re(x,m,n)$/;"	f
+allwrite	substdo.c	/^static int allwrite(op,fd,buf,len)$/;"	f	file:
+append	maildir.c	/^static int append(pq,filenames,subdir,time)$/;"	f	file:
+auto_home	auto_home.c	/^char auto_home[] = "\\$/;"	v
+auto_qmail	auto_qmail.c	/^char auto_qmail[] = "\\$/;"	v
+avail	alloc.c	/^static unsigned int avail = SPACE; \/* multiple of ALIGNMENT; 0<=avail<=SPACE *\/$/;"	v	file:
+binqqargs	qmail.c	/^static char *binqqargs[2] = { "bin\/qmail-queue", 0 } ;$/;"	v	file:
+blast	serialsmtp.c	/^void blast(ssfrom)$/;"	f
+bounce	maildirserial.c	/^int bounce(fd,why,flagtimeout)$/;"	f
+bouncefrom	maildirserial.c	/^config_str bouncefrom = CONFIG_STR;$/;"	v
+bouncehost	maildirserial.c	/^config_str bouncehost = CONFIG_STR;$/;"	v
+buf	maildirserial.c	/^char buf[1024];$/;"	v
+buf	qmail.h	/^  char buf[1024];$/;"	m	struct:qmail
+buf1	auto-str.c	/^char buf1[256];$/;"	v
+buf6	serialsmtp.c	/^char buf6[2048];$/;"	v
+buf7	serialsmtp.c	/^char buf7[2048];$/;"	v
+byte_chr	byte_chr.c	/^unsigned int byte_chr(s,n,c)$/;"	f
+byte_copy	byte_copy.c	/^void byte_copy(to,n,from)$/;"	f
+byte_copyr	byte_cr.c	/^void byte_copyr(to,n,from)$/;"	f
+byte_diff	byte_diff.c	/^int byte_diff(s,n,t)$/;"	f
+byte_equal	byte.h	11;"	d
+c	install.c	/^void c(home,subdir,file,uid,gid,mode)$/;"	f
+c	instcheck.c	/^void c(home,subdir,file,uid,gid,mode)$/;"	f
+caldate	caldate.h	/^struct caldate {$/;"	s
+caldate_frommjd	caldate_fmjd.c	/^void caldate_frommjd(cd,day,pwday,pyday)$/;"	f
+caltime	caltime.h	/^struct caltime {$/;"	s
+caltime_utc	caltime_utc.c	/^void caltime_utc(ct,t,pwday,pyday)$/;"	f
+case_diffb	case_diffb.c	/^int case_diffb(s,len,t)$/;"	f
+case_equals	case.h	11;"	d
+child	serialqmtp.c	/^void child() \/* reading from original stdin, writing to parent *\/$/;"	f
+client	maildirserial.c	/^char **client;$/;"	v
+config	config.h	13;"	d
+config_copy	config.c	/^int config_copy(c,d)$/;"	f
+config_data	config.h	14;"	d
+config_default	config.c	/^int config_default(c,s)$/;"	f
+config_env	config.c	/^int config_env(c,s)$/;"	f
+config_readfile	config.c	/^int config_readfile(c,fn)$/;"	f
+config_readline	config.c	/^int config_readline(c,fn)$/;"	f
+config_str	config.h	/^} config_str;$/;"	t	typeref:struct:__anon2
+copy	mess822.h	/^  stralloc *copy;$/;"	m	struct:__anon4
+ct	mess822.h	/^  struct caltime ct;$/;"	m	struct:__anon3	typeref:struct:__anon3::caltime
+d	alloc.c	/^typedef union { char irrelevant[ALIGNMENT]; double d; } aligned;$/;"	m	union:__anon1	file:
+d	install.c	/^void d(home,subdir,uid,gid,mode)$/;"	f
+d	instcheck.c	/^void d(home,subdir,uid,gid,mode)$/;"	f
+dataline	serialsmtp.c	/^stralloc dataline = {0};$/;"	v
+date	caltime.h	/^  struct caldate date;$/;"	m	struct:caltime	typeref:struct:caltime::caldate
+date	maildirserial.c	/^mess822_time date;$/;"	v
+datestr	maildirserial.c	/^stralloc datestr = {0};$/;"	v
+datetai	maildirserial.c	/^struct tai datetai;$/;"	v	typeref:struct:tai
+datetime	datetime.h	/^struct datetime {$/;"	s
+datetime_sec	datetime.h	/^typedef long datetime_sec;$/;"	t
+day	caldate.h	/^  int day;$/;"	m	struct:caldate
+deadfiles	maildirserial.c	/^stralloc deadfiles = {0};$/;"	v
+die_neteof	serialsmtp.c	/^void die_neteof() {$/;"	f
+die_netread	serialsmtp.c	/^void die_netread() {$/;"	f
+die_netwrite	serialsmtp.c	/^void die_netwrite() {$/;"	f
+die_nomem	maildirserial.c	/^void die_nomem()$/;"	f
+die_nomem	serialqmtp.c	/^void die_nomem() { strerr_die2x(111,FATAL,"out of memory"); }$/;"	f
+die_nomem	serialsmtp.c	/^void die_nomem() {$/;"	f
+die_output	serialqmtp.c	/^void die_output() { strerr_die2sys(111,FATAL,"unable to write output: "); }$/;"	f
+die_output	serialsmtp.c	/^void die_output() {$/;"	f
+die_proto	serialqmtp.c	/^void die_proto() { strerr_die2x(111,FATAL,"remote protocol violation"); }$/;"	f
+die_proto	serialsmtp.c	/^void die_proto() {$/;"	f
+die_qq	maildirserial.c	/^void die_qq()$/;"	f
+die_readclient	maildirserial.c	/^void die_readclient()$/;"	f
+die_readmess	serialsmtp.c	/^void die_readmess() {$/;"	f
+die_smtppathetic	serialsmtp.c	/^void die_smtppathetic() {$/;"	f
+die_usage	maildirserial.c	/^void die_usage() {$/;"	f
+die_usage	serialsmtp.c	/^void die_usage() {$/;"	f
+direntry	direntry.h	6;"	d
+doit	quote.c	/^static int doit(saout,sain)$/;"	f	file:
+doit	serialqmtp.c	/^void doit(fd)$/;"	f
+doit	serialsmtp.c	/^void doit(fd)$/;"	f
+doublebouncehost	maildirserial.c	/^config_str doublebouncehost = CONFIG_STR;$/;"	v
+doublebounceto	maildirserial.c	/^config_str doublebounceto = CONFIG_STR;$/;"	v
+dt	prioq.h	/^struct prioq_elt { datetime_sec dt; unsigned long id; } ;$/;"	m	struct:prioq_elt
+env_get	env.c	/^extern \/*@null@*\/char *env_get(s)$/;"	f
+err	maildirserial.c	/^stralloc err = {0};$/;"	v
+error_acces	error.c	/^int error_acces =$/;"	v
+error_again	error.c	/^int error_again =$/;"	v
+error_exist	error.c	/^int error_exist =$/;"	v
+error_inprogress	error.c	/^int error_inprogress =$/;"	v
+error_intr	error.c	/^int error_intr =$/;"	v
+error_io	error.c	/^int error_io =$/;"	v
+error_noent	error.c	/^int error_noent = $/;"	v
+error_nomem	error.c	/^int error_nomem =$/;"	v
+error_perm	error.c	/^int error_perm =$/;"	v
+error_pipe	error.c	/^int error_pipe =$/;"	v
+error_str	error_str.c	/^char *error_str(i)$/;"	f
+error_timeout	error.c	/^int error_timeout =$/;"	v
+error_txtbsy	error.c	/^int error_txtbsy =$/;"	v
+error_wouldblock	error.c	/^int error_wouldblock =$/;"	v
+fd	substdio.h	/^  int fd;$/;"	m	struct:substdio
+fd_copy	fd_copy.c	/^int fd_copy(to,from)$/;"	f
+fd_move	fd_move.c	/^int fd_move(to,from)$/;"	f
+fde	qmail.h	/^  int fde;$/;"	m	struct:qmail
+fdm	qmail.h	/^  int fdm;$/;"	m	struct:qmail
+fdsourcedir	install.c	/^int fdsourcedir = -1;$/;"	v
+filenames	maildirserial.c	/^stralloc filenames = {0};$/;"	v
+flag	mess822.h	/^  int *flag;$/;"	m	struct:__anon4
+flagbounce	maildirserial.c	/^int flagbounce = 0;$/;"	v
+flagconf	config.h	/^  int flagconf;$/;"	m	struct:__anon2
+flagerr	qmail.h	/^  int flagerr;$/;"	m	struct:qmail
+flaginit	leapsecs_init.c	/^static int flaginit = 0;$/;"	v	file:
+flaglifetime	maildirserial.c	/^int flaglifetime = 0;$/;"	v
+flagndelay	setlock.c	/^int flagndelay = 0;$/;"	v
+flagneedrset	serialsmtp.c	/^int flagneedrset = 0;$/;"	v
+flagpipelining	serialsmtp.c	/^int flagpipelining = 0;$/;"	v
+flagtimeout	maildirserial.c	/^int flagtimeout;$/;"	v
+flagx	setlock.c	/^int flagx = 0;$/;"	v
+fmt_ulong	fmt_ulong.c	/^unsigned int fmt_ulong(s,u) register char *s; register unsigned long u;$/;"	f
+fn	maildirserial.c	/^stralloc fn = {0};$/;"	v
+fn	serialqmtp.c	/^stralloc fn = {0};$/;"	v
+fn	serialsmtp.c	/^stralloc fn = {0};$/;"	v
+foo	quote.c	/^static stralloc foo = {0};$/;"	v	file:
+foo	trydrent.c	/^void foo()$/;"	f
+foo	trysysel.c	/^void foo()$/;"	f
+getln	getln.c	/^int getln(ss,sa,match,sep)$/;"	f
+getln2	getln2.c	/^int getln2(ss,sa,cont,clen,sep)$/;"	f
+getopt	sgetopt.c	/^int getopt(argc,argv,opts)$/;"	f
+getopt	sgetopt.c	19;"	d	file:
+getopt	sgetopt.h	5;"	d
+getthis	substdi.c	/^static int getthis(s,buf,len)$/;"	f	file:
+h	install.c	/^void h(home,uid,gid,mode)$/;"	f
+h	instcheck.c	/^void h(home,uid,gid,mode)$/;"	f
+hasprefix	maildirserial.c	/^int hasprefix(fd)$/;"	f
+hier	hier.c	/^void hier()$/;"	f
+hour	caltime.h	/^  int hour;$/;"	m	struct:caltime
+hour	datetime.h	/^  int hour;$/;"	m	struct:datetime
+id	prioq.h	/^struct prioq_elt { datetime_sec dt; unsigned long id; } ;$/;"	m	struct:prioq_elt
+inbuf	config.c	/^static char inbuf[128];$/;"	v	file:
+inbuf	install.c	/^char inbuf[SUBSTDIO_INSIZE];$/;"	v
+inbuf	serialqmtp.c	/^char inbuf[2048];$/;"	v
+info	maildirserial.c	/^void info(result)$/;"	f
+inprogress	mess822.h	/^  stralloc inprogress;$/;"	m	struct:__anon5
+irrelevant	alloc.c	/^typedef union { char irrelevant[ALIGNMENT]; double d; } aligned;$/;"	m	union:__anon1	file:
+it	subfderr.c	/^static substdio it = SUBSTDIO_FDBUF(write,2,subfd_errbuf,256);$/;"	v	file:
+it	subfdins.c	/^static substdio it = SUBSTDIO_FDBUF(subfd_readsmall,0,subfd_inbufsmall,256);$/;"	v	file:
+it	subfdouts.c	/^static substdio it = SUBSTDIO_FDBUF(write,1,subfd_outbufsmall,256);$/;"	v	file:
+known	mess822.h	/^  int known; \/* 0 for ct uninitialized; 1 if ok; 2 if ok and right zone *\/$/;"	m	struct:__anon3
+leapsecs	leapsecs_read.c	/^struct tai *leapsecs = 0;$/;"	v	typeref:struct:tai
+leapsecs_init	leapsecs_init.c	/^int leapsecs_init()$/;"	f
+leapsecs_num	leapsecs_read.c	/^int leapsecs_num = 0;$/;"	v
+leapsecs_read	leapsecs_read.c	/^int leapsecs_read()$/;"	f
+leapsecs_sub	leapsecs_sub.c	/^int leapsecs_sub(t)$/;"	f
+lifetime	maildirserial.c	/^unsigned long lifetime;$/;"	v
+line	config.c	/^static stralloc line = {0};$/;"	v	file:
+line	maildirserial.c	/^stralloc line = {0};$/;"	v
+line	serialqmtp.c	/^stralloc line = {0};$/;"	v
+line	serialsmtp.c	/^stralloc line = {0};$/;"	v
+lock_ex	lock_ex.c	/^int lock_ex(fd) int fd; { return flock(fd,LOCK_EX); }$/;"	f
+lock_ex	lock_ex.c	/^int lock_ex(fd) int fd; { return lockf(fd,1,0); }$/;"	f
+lock_exnb	lock_exnb.c	/^int lock_exnb(fd) int fd; { return flock(fd,LOCK_EX | LOCK_NB); }$/;"	f
+lock_exnb	lock_exnb.c	/^int lock_exnb(fd) int fd; { return lockf(fd,2,0); }$/;"	f
+maildir_chdir	maildir.c	/^int maildir_chdir()$/;"	f
+maildir_chdir_err	maildir.c	/^struct strerr maildir_chdir_err;$/;"	v	typeref:struct:strerr
+maildir_clean	maildir.c	/^void maildir_clean(tmpname)$/;"	f
+maildir_scan	maildir.c	/^int maildir_scan(pq,filenames,flagnew,flagcur)$/;"	f
+maildir_scan_err	maildir.c	/^struct strerr maildir_scan_err;$/;"	v	typeref:struct:strerr
+main	auto-str.c	/^void main(argc,argv)$/;"	f
+main	install.c	/^void main()$/;"	f
+main	instcheck.c	/^void main()$/;"	f
+main	maildirserial.c	/^void main(argc,argv)$/;"	f
+main	serialqmtp.c	/^void main(argc,argv)$/;"	f
+main	serialsmtp.c	/^void main(argc,argv)$/;"	f
+main	setlock.c	/^void main(argc,argv)$/;"	f
+main	trycpp.c	/^void main()$/;"	f
+main	tryflock.c	/^void main()$/;"	f
+main	trysgact.c	/^void main()$/;"	f
+main	tryulong64.c	/^void main()$/;"	f
+main	tryvfork.c	/^void main()$/;"	f
+main	trywaitp.c	/^void main()$/;"	f
+match	maildirserial.c	/^int match;$/;"	v
+match	serialqmtp.c	/^int match;$/;"	v
+mday	datetime.h	/^  int mday;$/;"	m	struct:datetime
+me	maildirserial.c	/^config_str me = CONFIG_STR;$/;"	v
+mess822_action	mess822.h	/^} mess822_action;$/;"	t	typeref:struct:__anon4
+mess822_date	mess822_date.c	/^int mess822_date(out,when)$/;"	f
+mess822_header	mess822.h	/^} mess822_header;$/;"	t	typeref:struct:__anon5
+mess822_time	mess822.h	/^} mess822_time;$/;"	t	typeref:struct:__anon3
+messbuf	maildirserial.c	/^char messbuf[256];$/;"	v
+messbuf	serialsmtp.c	/^char messbuf[4096];$/;"	v
+min	datetime.h	/^  int min;$/;"	m	struct:datetime
+minute	caltime.h	/^  int minute;$/;"	m	struct:caltime
+mon	datetime.h	/^  int mon;$/;"	m	struct:datetime
+montab	mess822_date.c	/^static char *montab[12] = {$/;"	v	file:
+month	caldate.h	/^  int month;$/;"	m	struct:caldate
+n	substdio.h	/^  int n;$/;"	m	struct:substdio
+name	mess822.h	/^  char *name; \/* 0 means all names *\/$/;"	m	struct:__anon4
+netbuf	serialqmtp.c	/^char netbuf[2048];$/;"	v
+now	now.c	/^datetime_sec now()$/;"	f
+num	maildirserial.c	/^char num[FMT_ULONG];$/;"	v
+num	serialqmtp.c	/^char num[FMT_ULONG];$/;"	v
+num2	serialqmtp.c	/^char num2[FMT_ULONG];$/;"	v
+offset	caltime.h	/^  long offset;$/;"	m	struct:caltime
+ok	quote.c	/^static char ok[128] = {$/;"	v	file:
+oldpid	wait_pid.c	/^static int oldpid = 0;$/;"	v	file:
+oldwstat	wait_pid.c	/^static int oldwstat; \/* defined if(oldpid) *\/$/;"	v	file:
+oneread	substdi.c	/^static int oneread(op,fd,buf,len)$/;"	f	file:
+op	substdio.h	/^  int (*op)();$/;"	m	struct:substdio
+open_append	open_append.c	/^int open_append(fn) char *fn;$/;"	f
+open_read	open_read.c	/^int open_read(fn) char *fn;$/;"	f
+open_trunc	open_trunc.c	/^int open_trunc(fn) char *fn;$/;"	f
+optarg	sgetopt.h	6;"	d
+optarg	subgetopt.c	/^char *optarg = 0;$/;"	v
+optarg	subgetopt.c	18;"	d	file:
+optdone	subgetopt.c	/^int optdone = SUBGETOPTDONE;$/;"	v
+optdone	subgetopt.c	20;"	d	file:
+opteof	sgetopt.h	12;"	d
+opterr	sgetopt.c	/^int opterr = 1;$/;"	v
+opterr	sgetopt.c	21;"	d	file:
+opterr	sgetopt.h	9;"	d
+optind	sgetopt.c	20;"	d	file:
+optind	sgetopt.h	7;"	d
+optind	subgetopt.c	/^int optind = 1;$/;"	v
+optind	subgetopt.c	16;"	d	file:
+optpos	sgetopt.h	8;"	d
+optpos	subgetopt.c	/^int optpos = 0;$/;"	v
+optpos	subgetopt.c	17;"	d	file:
+optproblem	sgetopt.c	22;"	d	file:
+optproblem	sgetopt.h	10;"	d
+optproblem	subgetopt.c	/^int optproblem = 0;$/;"	v
+optproblem	subgetopt.c	19;"	d	file:
+optprogname	sgetopt.c	/^char *optprogname = 0;$/;"	v
+optprogname	sgetopt.c	23;"	d	file:
+optprogname	sgetopt.h	11;"	d
+outbuf	install.c	/^char outbuf[SUBSTDIO_OUTSIZE];$/;"	v
+p	instcheck.c	/^void p(home,fifo,uid,gid,mode)$/;"	f
+p	substdio.h	/^  int p;$/;"	m	struct:substdio
+parent	serialqmtp.c	/^void parent() \/* reading from child, writing to original stdout *\/$/;"	f
+perm	instcheck.c	/^void perm(prefix1,prefix2,prefix3,file,type,uid,gid,mode)$/;"	f
+pic2p	maildirserial.c	/^int pic2p[2];$/;"	v
+pic2p	serialqmtp.c	/^int pic2p[2];$/;"	v
+pid	maildirserial.c	/^int pid; \/* in parent, pid of scanner; in scanner, pid of child *\/$/;"	v
+pid	qmail.h	/^  unsigned long pid;$/;"	m	struct:qmail
+pis2c	maildirserial.c	/^int pis2c[2];$/;"	v
+pq	maildirserial.c	/^prioq pq = {0};$/;"	v
+prefix	maildirserial.c	/^char *prefix;$/;"	v
+prefix	serialqmtp.c	/^char *prefix;$/;"	v
+prefix	serialsmtp.c	/^char *prefix;$/;"	v
+prefixlen	serialqmtp.c	/^unsigned int prefixlen;$/;"	v
+prioq_delmin	prioq.c	/^void prioq_delmin(pq)$/;"	f
+prioq_elt	prioq.h	/^struct prioq_elt { datetime_sec dt; unsigned long id; } ;$/;"	s
+prioq_insert	prioq.c	/^int prioq_insert(pq,pe)$/;"	f
+prioq_min	prioq.c	/^int prioq_min(pq,pe)$/;"	f
+process	config.c	/^static void process(sa)$/;"	f	file:
+put	maildirserial.c	/^void put(buf,len) char *buf; int len; { qmail_put(&qq,buf,len); }$/;"	f
+puts	auto-str.c	/^void puts(s)$/;"	f
+puts	maildirserial.c	/^void puts(buf) char *buf; { qmail_puts(&qq,buf); }$/;"	f
+qmail	qmail.h	/^struct qmail {$/;"	s
+qmail_close	qmail.c	/^char *qmail_close(qq)$/;"	f
+qmail_fail	qmail.c	/^void qmail_fail(qq) struct qmail *qq;$/;"	f
+qmail_from	qmail.c	/^void qmail_from(qq,s) struct qmail *qq; char *s;$/;"	f
+qmail_open	qmail.c	/^int qmail_open(qq)$/;"	f
+qmail_put	qmail.c	/^void qmail_put(qq,s,len) struct qmail *qq; char *s; int len;$/;"	f
+qmail_puts	qmail.c	/^void qmail_puts(qq,s) struct qmail *qq; char *s;$/;"	f
+qmail_qp	qmail.c	/^unsigned long qmail_qp(qq) struct qmail *qq;$/;"	f
+qmail_to	qmail.c	/^void qmail_to(qq,s) struct qmail *qq; char *s;$/;"	f
+qp	maildirserial.c	/^unsigned long qp;$/;"	v
+qq	maildirserial.c	/^struct qmail qq;$/;"	v	typeref:struct:qmail
+qqx	maildirserial.c	/^char *qqx;$/;"	v
+quit	serialsmtp.c	/^void quit() \/* what a stupid protocol *\/$/;"	f
+quorecip	serialsmtp.c	/^stralloc quorecip = {0};$/;"	v
+quosender	serialsmtp.c	/^stralloc quosender = {0};$/;"	v
+quote	quote.c	/^int quote(saout,sain)$/;"	f
+quote2	quote.c	/^int quote2(sa,s)$/;"	f
+quote_need	quote.c	/^int quote_need(s,n)$/;"	f
+quoted	maildirserial.c	/^stralloc quoted = {0};$/;"	v
+readcontrols	maildirserial.c	/^void readcontrols()$/;"	f
+realspace	alloc.c	/^static aligned realspace[SPACE \/ ALIGNMENT];$/;"	v	file:
+recipient	maildirserial.c	/^stralloc recipient = {0};$/;"	v
+recipient	serialqmtp.c	/^stralloc recipient = {0};$/;"	v
+recipient	serialsmtp.c	/^stralloc recipient = {0};$/;"	v
+remoteip	serialqmtp.c	/^char *remoteip;$/;"	v
+remoteip	serialsmtp.c	/^char *remoteip;$/;"	v
+result	serialsmtp.c	/^void result(code)$/;"	f
+sa	config.h	/^  stralloc sa;$/;"	m	struct:__anon2
+saferead	serialqmtp.c	/^int saferead(fd,buf,len) int fd; char *buf; int len;$/;"	f
+saferead	serialsmtp.c	/^int saferead(fd,buf,len) int fd; char *buf; int len;$/;"	f
+safewrite	serialqmtp.c	/^int safewrite(fd,buf,len) int fd; char *buf; int len;$/;"	f
+safewrite	serialsmtp.c	/^int safewrite(fd,buf,len) int fd; char *buf; int len;$/;"	f
+scan_ulong	scan_ulong.c	/^unsigned int scan_ulong(s,u) register char *s; register unsigned long *u;$/;"	f
+scanner	maildirserial.c	/^void scanner()$/;"	f
+sec	datetime.h	/^  int sec;$/;"	m	struct:datetime
+second	caltime.h	/^  int second;$/;"	m	struct:caltime
+sender	maildirserial.c	/^stralloc sender = {0};$/;"	v
+sender	serialqmtp.c	/^stralloc sender = {0};$/;"	v
+sender	serialsmtp.c	/^stralloc sender = {0};$/;"	v
+sgopt	subgetopt.c	/^int sgopt(argc,argv,opts)$/;"	f
+sgopt	subgetopt.c	15;"	d	file:
+sgopt	subgetopt.h	5;"	d
+sgoptarg	subgetopt.h	6;"	d
+sgoptdone	subgetopt.h	11;"	d
+sgoptind	subgetopt.h	7;"	d
+sgoptpos	subgetopt.h	8;"	d
+sgoptproblem	subgetopt.h	9;"	d
+sgoptprogname	subgetopt.h	10;"	d
+sig_catch	sig_catch.c	/^void sig_catch(sig,f)$/;"	f
+sig_pipedefault	sig_pipe.c	/^void sig_pipedefault() { sig_catch(SIGPIPE,SIG_DFL); }$/;"	f
+sig_pipeignore	sig_pipe.c	/^void sig_pipeignore() { sig_catch(SIGPIPE,SIG_IGN); }$/;"	f
+smtpcode	serialsmtp.c	/^unsigned long smtpcode(flagehlo)$/;"	f
+smtpline	serialsmtp.c	/^stralloc smtpline = {0};$/;"	v
+space	alloc.c	11;"	d	file:
+ss	maildirserial.c	/^substdio ss; \/* in parent, reading from child; in scanner, writing to child *\/$/;"	v
+ss	qmail.h	/^  substdio ss;$/;"	m	struct:qmail
+ss1	auto-str.c	/^substdio ss1 = SUBSTDIO_FDBUF(write,1,buf1,sizeof(buf1));$/;"	v
+ss6	serialsmtp.c	/^substdio ss6 = SUBSTDIO_FDBUF(saferead,6,buf6,sizeof buf6);$/;"	v
+ss7	serialsmtp.c	/^substdio ss7 = SUBSTDIO_FDBUF(safewrite,7,buf7,sizeof buf7);$/;"	v
+ssin	install.c	/^substdio ssin;$/;"	v
+ssmess	maildirserial.c	/^substdio ssmess;$/;"	v
+ssmess	serialsmtp.c	/^substdio ssmess;$/;"	v
+ssnet	serialqmtp.c	/^substdio ssnet; \/* in child: write 7; in parent: read 6 *\/$/;"	v
+ssout	install.c	/^substdio ssout;$/;"	v
+str_diff	str_diff.c	/^int str_diff(s,t)$/;"	f
+str_equal	str.h	12;"	d
+str_len	str_len.c	/^unsigned int str_len(s)$/;"	f
+str_rchr	str_rchr.c	/^unsigned int str_rchr(s,c)$/;"	f
+str_start	str_start.c	/^int str_start(s,t)$/;"	f
+stralloc_0	stralloc.h	19;"	d
+stralloc_cat	stralloc_cat.c	/^int stralloc_cat(sato,safrom)$/;"	f
+stralloc_catb	stralloc_catb.c	/^int stralloc_catb(sa,s,n)$/;"	f
+stralloc_catint	stralloc.h	27;"	d
+stralloc_catint0	stralloc.h	26;"	d
+stralloc_catlong	stralloc.h	24;"	d
+stralloc_catlong0	stralloc_num.c	/^int stralloc_catlong0(sa,l,n)$/;"	f
+stralloc_cats	stralloc_cats.c	/^int stralloc_cats(sa,s)$/;"	f
+stralloc_catuint0	stralloc.h	25;"	d
+stralloc_catulong0	stralloc_num.c	/^int stralloc_catulong0(sa,u,n)$/;"	f
+stralloc_copy	stralloc_copy.c	/^int stralloc_copy(sato,safrom)$/;"	f
+stralloc_copyb	stralloc_opyb.c	/^int stralloc_copyb(sa,s,n)$/;"	f
+stralloc_copys	stralloc_opys.c	/^int stralloc_copys(sa,s)$/;"	f
+stralloc_starts	stralloc_arts.c	/^int stralloc_starts(sa,s)$/;"	f
+strerr	strerr.h	/^struct strerr$/;"	s
+strerr_die	strerr_die.c	/^void strerr_die(e,x1,x2,x3,x4,x5,x6,se)$/;"	f
+strerr_die1	strerr.h	51;"	d
+strerr_die1sys	strerr.h	64;"	d
+strerr_die1x	strerr.h	77;"	d
+strerr_die2	strerr.h	49;"	d
+strerr_die2sys	strerr.h	62;"	d
+strerr_die2x	strerr.h	75;"	d
+strerr_die3	strerr.h	47;"	d
+strerr_die3sys	strerr.h	60;"	d
+strerr_die3x	strerr.h	73;"	d
+strerr_die4	strerr.h	45;"	d
+strerr_die4sys	strerr.h	58;"	d
+strerr_die4x	strerr.h	71;"	d
+strerr_die5	strerr.h	43;"	d
+strerr_die5sys	strerr.h	56;"	d
+strerr_die5x	strerr.h	69;"	d
+strerr_die6	strerr.h	41;"	d
+strerr_die6sys	strerr.h	54;"	d
+strerr_die6x	strerr.h	67;"	d
+strerr_sys	strerr_sys.c	/^struct strerr strerr_sys;$/;"	v	typeref:struct:strerr
+strerr_sysinit	strerr_sys.c	/^void strerr_sysinit()$/;"	f
+strerr_warn	strerr_die.c	/^void strerr_warn(x1,x2,x3,x4,x5,x6,se)$/;"	f
+strerr_warn1	strerr.h	38;"	d
+strerr_warn2	strerr.h	36;"	d
+strerr_warn3	strerr.h	34;"	d
+strerr_warn4	strerr.h	32;"	d
+strerr_warn5	strerr.h	30;"	d
+strerr_warn6	strerr.h	28;"	d
+subfd_errbuf	subfderr.c	/^char subfd_errbuf[256];$/;"	v
+subfd_inbufsmall	subfdins.c	/^char subfd_inbufsmall[256];$/;"	v
+subfd_outbufsmall	subfdouts.c	/^char subfd_outbufsmall[256];$/;"	v
+subfd_readsmall	subfdins.c	/^int subfd_readsmall(fd,buf,len) int fd; char *buf; int len;$/;"	f
+subfderr	subfderr.c	/^substdio *subfderr = &it;$/;"	v
+subfdinsmall	subfdins.c	/^substdio *subfdinsmall = &it;$/;"	v
+subfdoutsmall	subfdouts.c	/^substdio *subfdoutsmall = &it;$/;"	v
+substdio	substdio.h	/^typedef struct substdio {$/;"	s
+substdio	substdio.h	/^} substdio;$/;"	t	typeref:struct:substdio
+substdio_BPUTC	substdio.h	39;"	d
+substdio_PEEK	substdio.h	36;"	d
+substdio_SEEK	substdio.h	37;"	d
+substdio_bget	substdi.c	/^int substdio_bget(s,buf,len)$/;"	f
+substdio_bput	substdo.c	/^int substdio_bput(s,buf,len)$/;"	f
+substdio_bputs	substdo.c	/^int substdio_bputs(s,buf)$/;"	f
+substdio_copy	substdio_copy.c	/^int substdio_copy(ssout,ssin)$/;"	f
+substdio_fdbuf	substdio.c	/^void substdio_fdbuf(s,op,fd,buf,len)$/;"	f
+substdio_feed	substdi.c	/^int substdio_feed(s)$/;"	f
+substdio_fileno	substdio.h	31;"	d
+substdio_flush	substdo.c	/^int substdio_flush(s)$/;"	f
+substdio_get	substdi.c	/^int substdio_get(s,buf,len)$/;"	f
+substdio_peek	substdi.c	/^char *substdio_peek(s)$/;"	f
+substdio_put	substdo.c	/^int substdio_put(s,buf,len)$/;"	f
+substdio_putflush	substdo.c	/^int substdio_putflush(s,buf,len)$/;"	f
+substdio_puts	substdo.c	/^int substdio_puts(s,buf)$/;"	f
+substdio_putsflush	substdo.c	/^int substdio_putsflush(s,buf)$/;"	f
+substdio_seek	substdi.c	/^void substdio_seek(s,len)$/;"	f
+tai	tai.h	/^struct tai {$/;"	s
+tai_approx	tai.h	12;"	d
+tai_less	tai.h	16;"	d
+tai_now	tai_now.c	/^void tai_now(t)$/;"	f
+tai_unpack	tai_unpack.c	/^void tai_unpack(s,t)$/;"	f
+timeoutread	timeoutread.c	/^int timeoutread(t,fd,buf,len) int t; int fd; char *buf; int len;$/;"	f
+timeoutwrite	timeoutwrite.c	/^int timeoutwrite(t,fd,buf,len) int t; int fd; char *buf; int len;$/;"	f
+uint64	uint64.h	/^typedef unsigned long uint64;$/;"	t
+usable	maildirserial.c	/^int usable(fn)$/;"	f
+usage	setlock.c	/^void usage() {$/;"	f
+value	mess822.h	/^  stralloc *value;$/;"	m	struct:__anon4
+wait_crashed	wait.h	9;"	d
+wait_exitcode	wait.h	10;"	d
+wait_pid	wait_pid.c	/^int wait_pid(wstat,pid) int *wstat; int pid;$/;"	f
+wait_stopped	wait.h	12;"	d
+wait_stopsig	wait.h	11;"	d
+wday	datetime.h	/^  int wday;$/;"	m	struct:datetime
+when	mess822.h	/^  mess822_time *when;$/;"	m	struct:__anon4
+who	strerr.h	/^  struct strerr *who;$/;"	m	struct:strerr	typeref:struct:strerr::strerr
+wstat	maildirserial.c	/^int wstat;$/;"	v
+x	strerr.h	/^  char *x;$/;"	m	struct:strerr
+x	substdio.h	/^  char *x;$/;"	m	struct:substdio
+x	tai.h	/^  uint64 x;$/;"	m	struct:tai
+y	strerr.h	/^  char *y;$/;"	m	struct:strerr
+yday	datetime.h	/^  int yday;$/;"	m	struct:datetime
+year	caldate.h	/^  long year;$/;"	m	struct:caldate
+year	datetime.h	/^  int year;$/;"	m	struct:datetime
+z	install.c	/^void z(home,subdir,file,len,uid,gid,mode)$/;"	f
+z	instcheck.c	/^void z(home,file,len,uid,gid,mode)$/;"	f
+z	strerr.h	/^  char *z;$/;"	m	struct:strerr
