@@ -1,0 +1,50 @@
+serialmail 0.75, beta.
+19981114
+Copyright 1998
+D. J. Bernstein, qmail@pobox.com
+http://pobox.com/~djb/serialmail.html
+
+serialmail is a collection of tools for passing mail across serial
+links. See BLURB for a more detailed advertisement.
+
+INSTALL says how to set up serialmail.
+
+The rest of this file is a list of systypes where various versions of
+serialmail have been reported to work.
+
+0.72: aix-4-1-:-:-:00000004c000-:- (tnx TU)
+0.72: aix-4-2-:-:-:000136094c00-:- (tnx TU)
+0.72: bsd.386-1.1-0-:i386-:-:i386-:- (tnx TM)
+0.72: freebsd-2.2-980309-snap-:i386-:-:cyrix.6x86mx-:- (tnx root@camj=???)
+0.72: freebsd-2.2-stable-:i386-:-:pentium-:- (tnx JB)
+0.72: freebsd-2.2.2-release-:i386-:-:i486-dx-:- (tnx MM)
+0.72: freebsd-2.2.2-release-:i386-:-:pentium-:- (tnx DAB)
+0.72: freebsd-2.2.5-release-:i386-:-:pentium-:- (tnx DAB)
+0.51: linux-2.0.18-:i386-:-:i486-:- (tnx JMS)
+0.72: linux-2.0.23-:i386-:-:pentium-:- (tnx root@oke=???)
+0.71: linux-2.0.27-:i386-:-:i486-:- (tnx RN)
+0.51: linux-2.0.27-:i386-:-:pentium-:- (tnx JK)
+0.72: linux-2.0.29-:i386-:-:i486-:- (tnx JBKH)
+0.72: linux-2.0.29-:i386-:-:pentium-:- (tnx sz2521@rzmail=???)
+0.72: linux-2.0.30-:i386-:-:i486-:- (tnx root@autobahn=???)
+0.72: linux-2.0.30-:i386-:-:pentium-:- (tnx CL)
+0.72: linux-2.0.30-:i386-:-:ppro-:- (tnx TG)
+0.72: linux-2.0.31-:i386-:-:pentium-:- (tnx RAL)
+0.72: linux-2.0.32-:i386-:-:pentium-:- (tnx BH)
+0.72: linux-2.0.32-:i386-:-:ppro-:- (tnx root@josva=???)
+0.72: linux-2.0.33-:i386-:-:pentium-:- (tnx MI)
+0.72: linux-2.0.34-:i386-:-:i486-:- (tnx APG)
+0.72: linux-2.0.34-:i386-:-:ppro-:- (tnx DP)
+0.72: linux-2.0.35-:i386-:-:i486-:- (tnx HF)
+0.72: linux-2.0.35-:i386-:-:pentium-:- (tnx CJ)
+0.72: linux-2.1.119-:i386-:-:ppro-:- (tnx RS)
+0.72: linux-2.1.120-:alpha-:-:alpha-:- (tnx PJR)
+0.76: linux-2.1.123-:i386-:-:pentium-:- (tnx MKS)
+0.72: linux-2.1.49-:i386-:-:pentium-:- (tnx JF)
+0.72: netbsd-1.1-:i386-:-:pentium.(genuineintel.586-class.cpu)-:- (tnx GL)
+0.72: netbsd-1.3_alpha-:i386-:-:intel.pentium.(p54c).(586-class)-:- (tnx GL)
+0.72: sunos-4.1.4-1-:unknown-:sun4-:sun4m-:sun4m- (tnx JB)
+0.51: sunos-5.4-generic_101945-32-:sparc-:sun4-:sun4m-:sun4m- (tnx RDM)
+0.72: sunos-5.5-generic_103093-06-:sparc-:sun4-:sun4m-:sun4m- (tnx TEE)
+0.72: sunos-5.5-generic_103094-07-:i386-:i86pc-:i86pc-:i86pc- (tnx MRG)
+0.72: sunos-5.5.1-generic_103640-14-:sparc-:sun4-:sun4m-:sun4m- (tnx root@donald=???)

@@ -1,0 +1,300 @@
+--- setlock requires arguments
+setlock: usage: setlock [ -nNxX ] file program [ arg ... ]
+100
+--- setlock complains if it cannot create lock file
+setlock: fatal: unable to open test/nonexistent/lock: file does not exist
+111
+--- setlock -x exits quietly if it cannot create lock file
+0
+--- setlock creates lock file
+ok
+0
+--- setlock does not truncate lock file
+ok
+0
+--- setlock -n complains if file is already locked
+setlock: fatal: unable to lock test/lock: temporary failure
+111
+--- setlock -nx exits quietly if file is already locked
+0
+--- serialqmtp requires arguments
+serialqmtp: usage: serialqmtp prefix
+100
+--- serialqmtp skips messages without the prefix
+0
+
+--- serialqmtp skips unreadable messages
+serialqmtp: fatal: unable to open file
+111
+
+--- serialqmtp strips prefix
+serialqmtp: fatal: network read error: end of file
+111
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,
+--- serialqmtp handles I/O errors
+serialqmtp: fatal: network read error: file descriptor not open
+111
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,
+--- serialqmtp handles success from QMTP server
+test/dir/new/10000^@Kthanks
+0
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,
+--- serialqmtp catches weird characters from QMTP server
+test/dir/new/10000^@Kth?n?s
+0
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,
+--- serialqmtp handles temporary failure from QMTP server
+test/dir/new/10000^@Ztemporary failure
+0
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,
+--- serialqmtp handles permanent failure from QMTP server
+test/dir/new/10000^@Dpermanent failure
+0
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,
+--- serialqmtp handles multiple messages
+test/dir/new/10000^@Kthanks
+test/dir/new/20000^@Kthanks again
+0
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,17:
+This is a test.
+,0:,16:12:You@Virt.Dom,,
+--- serialqmtp handles success followed by EOF
+test/dir/new/10000^@Kthanks
+serialqmtp: fatal: network read error: end of file
+111
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,17:
+This is a test.
+,0:,16:12:You@Virt.Dom,,
+--- serialqmtp handles deferral followed by success
+test/dir/new/10000^@Ztemporary failure
+test/dir/new/20000^@Kthanks
+0
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,17:
+This is a test.
+,0:,16:12:You@Virt.Dom,,
+--- serialqmtp puts $TCPREMOTEIP in front of results
+test/dir/new/10000^@Z1.2.3.4 said: temporary failure
+test/dir/new/20000^@K1.2.3.4 said: thanks
+0
+17:
+This is a test.
+,6:Sender,11:8:Whatever,,17:
+This is a test.
+,0:,16:12:You@Virt.Dom,,
+--- serialsmtp requires arguments
+serialsmtp: usage: serialsmtp prefix helohost
+100
+--- serialsmtp skips messages without the prefix
+0
+EHLO Host^M
+QUIT^M
+--- serialsmtp skips unreadable messages
+serialsmtp: fatal: unable to open test/dir/new/10000: access denied
+111
+EHLO Host^M
+--- serialsmtp handles I/O errors
+serialsmtp: fatal: network read error: file descriptor not open
+111
+--- serialsmtp handles success from SMTP server
+test/dir/new/10000^@K250 thanks
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+QUIT^M
+--- serialsmtp gives up if message has partial final line
+serialsmtp: fatal: SMTP cannot transfer messages with partial final lines
+111
+EHLO Host^M
+MAIL FROM:<"needs quoting!"@the..host>^M
+RCPT TO:<"more..quoting"@Virt.Dom>^M
+DATA^M
+--- serialsmtp catches weird characters from SMTP server
+test/dir/new/10000^@K250 th?nks
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+QUIT^M
+--- serialsmtp handles temporary failure from SMTP server
+test/dir/new/10000^@Z451 temporary failure
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+QUIT^M
+--- serialsmtp handles permanent failure from SMTP server
+test/dir/new/10000^@D553 permanent failure
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+QUIT^M
+--- serialsmtp handles multiple messages
+test/dir/new/10000^@K250 thanks
+test/dir/new/20000^@K250 thanks
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+RSET^M
+MAIL FROM:<>^M
+RCPT TO:<You@Virt.Dom>^M
+DATA^M
+This is a test.^M
+.^M
+QUIT^M
+--- serialsmtp handles success followed by EOF
+test/dir/new/10000^@K250 thanks
+serialsmtp: fatal: network read error: end of file
+111
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+RSET^M
+MAIL FROM:<>^M
+RCPT TO:<You@Virt.Dom>^M
+DATA^M
+--- serialsmtp handles deferral followed by success
+test/dir/new/10000^@Z451 temporary failure
+test/dir/new/20000^@K250 thanks
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+RSET^M
+MAIL FROM:<>^M
+RCPT TO:<You@Virt.Dom>^M
+DATA^M
+This is a test.^M
+.^M
+QUIT^M
+--- serialsmtp puts $TCPREMOTEIP in front of results
+test/dir/new/10000^@Z1.2.3.4 said: 451 temporary failure
+test/dir/new/20000^@K1.2.3.4 said: 250 thanks
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+This is a test.^M
+.^M
+RSET^M
+MAIL FROM:<>^M
+RCPT TO:<You@Virt.Dom>^M
+DATA^M
+This is a test.^M
+.^M
+QUIT^M
+--- serialsmtp handles MAIL failure from SMTP server
+test/dir/new/10000^@Z451 bad MAIL
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+QUIT^M
+--- serialsmtp gives up if MAIL fails and RCPT succeeds
+test/dir/new/10000^@Z451 bad MAIL
+serialsmtp: fatal: protocol violation
+111
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+--- serialsmtp gives up if MAIL fails and DATA succeeds
+test/dir/new/10000^@Z451 bad MAIL
+serialsmtp: fatal: protocol violation
+111
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+--- serialsmtp handles RCPT failure from SMTP server
+test/dir/new/10000^@Z451 bad RCPT
+0
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+QUIT^M
+--- serialsmtp gives up if RCPT fails and DATA succeeds
+test/dir/new/10000^@Z451 bad RCPT
+serialsmtp: fatal: protocol violation
+111
+EHLO Host^M
+MAIL FROM:<Sender>^M
+RCPT TO:<Whatever>^M
+DATA^M
+--- maildirserial requires arguments
+maildirserial: usage: maildirserial [ -b ] [ -t lifetime ] dir prefix client [ arg ... ]
+100
+--- maildirserial gives up if it cannot read maildir
+maildirserial: fatal: unable to chdir to test/nonexistent: file does not exist
+111
+--- maildirserial skips messages without the prefix
+0
+--- maildirserial runs client repeatedly on exit code 0
+maildirserial: fatal: making no progress, giving up
+111
+new/10000^@new/20000^@new/30000^@new/10000^@new/20000^@new/30000^@new/10000^@new/20000^@new/30000^@
+--- maildirserial runs client repeatedly on exit code 111
+maildirserial: fatal: making no progress, giving up
+111
+new/10000^@new/20000^@new/30000^@new/10000^@new/20000^@new/30000^@new/10000^@new/20000^@new/30000^@
+--- maildirserial handles temporary failure
+maildirserial: info: new/10000 failed temporarily: temporary failure
+maildirserial: fatal: making no progress, giving up
+111
+new/10000^@new/20000^@new/30000^@new/20000^@new/30000^@new/20000^@new/30000^@new/20000^@new/30000^@
+--- maildirserial handles permanent failure
+maildirserial: info: new/10000 failed: permanent failure
+maildirserial: fatal: making no progress, giving up
+111
+new/10000^@new/20000^@new/30000^@new/20000^@new/30000^@new/20000^@new/30000^@new/20000^@new/30000^@
+--- maildirserial removes message on success
+maildirserial: info: new/10000 succeeded: thanks
+maildirserial: fatal: making no progress, giving up
+111
+new/10000^@new/20000^@new/30000^@new/20000^@new/30000^@new/20000^@new/30000^@new/20000^@new/30000^@
+20000
+30000

@@ -1,0 +1,70 @@
+.TH setlock 1
+.SH NAME
+setlock \- run a program with a file locked
+.SH SYNTAX
+.B setlock
+[
+.B \-nNxX
+]
+.I file
+.I program
+[
+.I arg ...
+]
+.SH DESCRIPTION
+.B setlock
+opens
+.I file
+for writing (creating it if it does not exist),
+obtains an exclusive lock on it,
+and runs
+.IR program .
+
+Normally the lock disappears when
+.I program
+exits.
+
+(Here's the complete story:
+.I program
+is given a descriptor for a locked ofile pointing to
+.IR file .
+The lock disappears when this ofile is
+(1) closed by all the processes that have descriptors for it
+or
+(2) explicitly unlocked.)
+.SH OPTIONS
+.TP
+.B \-n
+No delay.
+If
+.I file
+is locked by another process,
+.B setlock
+gives up.
+.TP
+.B \-N
+(Default.)
+Delay.
+If
+.I file
+is locked by another process,
+.B setlock
+waits until it can obtain a new lock.
+.TP
+.B \-x
+If
+.I file
+cannot be opened (or created) or locked,
+.B setlock
+exits zero.
+.TP
+.B \-X
+(Default.)
+If
+.I file
+cannot be opened (or created) or locked,
+.B setlock
+prints an error message and exits nonzero.
+.SH "SEE ALSO"
+flock(2),
+lockf(3)

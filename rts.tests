@@ -1,0 +1,374 @@
+# Assumes that maildirmake is in $PATH.
+
+# Not tested:
+#   maildirsmtp
+#   maildirqmtp
+#   serialsmtp times out
+#   serialsmtp waits if no PIPELINING
+#   serialsmtp truncates long results
+#   serialsmtp quotes properly
+#   serialqmtp times out
+#   serialqmtp truncates long results
+#   maildirserial -b
+#   maildirserial -t
+
+
+
+rm -rf test
+mkdir test
+maildirmake test/dir
+
+
+
+echo '--- setlock requires arguments'
+setlock whatever; echo $?
+
+echo '--- setlock complains if it cannot create lock file'
+setlock test/nonexistent/lock echo wrong; echo $?
+
+echo '--- setlock -x exits quietly if it cannot create lock file'
+setlock -x test/nonexistent/lock echo wrong; echo $?
+
+echo '--- setlock creates lock file'
+setlock test/lock echo ok; echo $?
+
+echo '--- setlock does not truncate lock file'
+echo ok > test/lock
+setlock test/lock cat test/lock; echo $?
+rm -f test/lock
+
+echo '--- setlock -n complains if file is already locked'
+setlock test/lock setlock -n test/lock echo ok; echo $?
+
+echo '--- setlock -nx exits quietly if file is already locked'
+setlock test/lock setlock -nx test/lock echo ok; echo $?
+
+
+echo 'Return-Path: <Sender>
+Delivered-To: Account-Whatever
+This is a test.' > test/dir/new/10000
+
+echo 'Return-Path: <>
+Delivered-To: Account-You@Virt.Dom
+This is a test.' > test/dir/new/20000
+
+echo -n 'Return-Path: <needs quoting!@the..host>
+Delivered-To: Account-more..quoting@Virt.Dom
+. one dot
+.. two dots
+This is a test.' > test/dir/new/30000
+
+echo -n '7:Kthanks,' > test/qmtpk
+echo -n '7:Kthanks,' | tr k '\0' | tr a '\012' > test/qmtpweird
+echo -n '7:Kthanks,13:Kthanks again,' > test/qmtpkk
+echo -n '18:Ztemporary failure,' > test/qmtpz
+echo -n '18:Ztemporary failure,7:Kthanks,' > test/qmtpzk
+echo -n '18:Dpermanent failure,' > test/qmtpd
+
+echo '220 Hi
+250 ok' > test/smtphi
+echo '220 Hi
+250-Silly
+250 PipeLining
+250 ok
+250 ok
+354 go ahead
+250 thanks' > test/smtpk
+echo '220-Greeting
+220 greeting end
+250-ehlo
+250-PipeLining with some spaces
+250 ehlo end
+250-mail
+250 mail end
+250-rcpt
+250 rcpt end
+354-data
+354 data end
+250-message
+250 thxnks' | tr x '\0' > test/smtpweird
+echo '220 Hi
+250-Silly
+250 PipeLining
+250 ok
+250 ok
+354 go ahead
+451 temporary failure' > test/smtpz
+echo '220 Hi
+250-Silly
+250 PipeLining
+250 ok
+250 ok
+354 go ahead
+553 permanent failure' > test/smtpd
+echo '220 Hi
+250-Silly
+250 PipeLining
+250 ok
+250 ok
+354 go ahead
+250 thanks
+250 ok
+250 ok
+250 ok
+354 go ahead
+250 thanks' > test/smtpkk
+echo '220 Hi
+250-Silly
+250 PipeLining
+250 ok
+250 ok
+354 go ahead
+451 temporary failure
+250 ok
+250 ok
+250 ok
+354 go ahead
+250 thanks' > test/smtpzk
+
+echo '220 Hi
+250-Silly
+250 PipeLining
+451 bad MAIL
+503 wrong
+503 wrong' > test/smtpmxx
+echo '220 Hi
+250-Silly
+250 PipeLining
+451 bad MAIL
+503 wrong
+354 go ahead' > test/smtpmxproto
+echo '220 Hi
+250-Silly
+250 PipeLining
+451 bad MAIL
+250 ok' > test/smtpmproto
+echo '220 Hi
+250-Silly
+250 PipeLining
+250 ok
+451 bad RCPT
+503 wrong' > test/smtprx
+echo '220 Hi
+250-Silly
+250 PipeLining
+250 ok
+451 bad RCPT
+354 go ahead' > test/smtprproto
+
+
+echo '--- serialqmtp requires arguments'
+serialqmtp; echo $?
+
+echo '--- serialqmtp skips messages without the prefix'
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Wrong- 7>test/client; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp skips unreadable messages'
+chmod 0 test/dir/new/10000
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Wrong- 7>test/client; echo $?
+chmod 644 test/dir/new/10000
+cat test/client; echo ''
+
+echo '--- serialqmtp strips prefix'
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6</dev/null; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp handles I/O errors'
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<&-; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp handles success from QMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<test/qmtpk; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp catches weird characters from QMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<test/qmtpweird; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp handles temporary failure from QMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<test/qmtpz; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp handles permanent failure from QMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<test/qmtpd; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp handles multiple messages'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<test/qmtpkk; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp handles success followed by EOF'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<test/qmtpk; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp handles deferral followed by success'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| serialqmtp Account- 7>test/client 6<test/qmtpzk; echo $?
+cat test/client; echo ''
+
+echo '--- serialqmtp puts $TCPREMOTEIP in front of results'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| env TCPREMOTEIP=1.2.3.4 serialqmtp Account- 7>test/client 6<test/qmtpzk; echo $?
+cat test/client; echo ''
+
+
+echo '--- serialsmtp requires arguments'
+serialsmtp Wrong-; echo $?
+
+echo '--- serialsmtp skips messages without the prefix'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Wrong- Host 7>test/client 6<test/smtphi; echo $?
+cat test/client
+
+echo '--- serialsmtp skips unreadable messages'
+chmod 0 test/dir/new/10000
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Wrong- Host 7>test/client 6<test/smtphi; echo $?
+chmod 644 test/dir/new/10000
+cat test/client
+
+echo '--- serialsmtp handles I/O errors'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<&-; echo $?
+cat test/client
+
+echo '--- serialsmtp handles success from SMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpk; echo $?
+cat test/client
+
+echo '--- serialsmtp gives up if message has partial final line'
+echo test/dir/new/30000xtest/dir/new/20000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpk; echo $?
+cat test/client
+
+echo '--- serialsmtp catches weird characters from SMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpweird; echo $?
+cat test/client
+
+echo '--- serialsmtp handles temporary failure from SMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpz; echo $?
+cat test/client
+
+echo '--- serialsmtp handles permanent failure from SMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpd; echo $?
+cat test/client
+
+echo '--- serialsmtp handles multiple messages'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpkk; echo $?
+cat test/client
+
+echo '--- serialsmtp handles success followed by EOF'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpk; echo $?
+cat test/client
+
+echo '--- serialsmtp handles deferral followed by success'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpzk; echo $?
+cat test/client
+
+echo '--- serialsmtp puts $TCPREMOTEIP in front of results'
+echo test/dir/new/10000xtest/dir/new/20000x | tr x '\0' \
+| env TCPREMOTEIP=1.2.3.4 serialsmtp Account- Host 7>test/client 6<test/smtpzk
+echo $?
+cat test/client
+
+echo '--- serialsmtp handles MAIL failure from SMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpmxx; echo $?
+cat test/client
+
+echo '--- serialsmtp gives up if MAIL fails and RCPT succeeds'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpmproto; echo $?
+cat test/client
+
+echo '--- serialsmtp gives up if MAIL fails and DATA succeeds'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtpmxproto; echo $?
+cat test/client
+
+echo '--- serialsmtp handles RCPT failure from SMTP server'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtprx; echo $?
+cat test/client
+
+echo '--- serialsmtp gives up if RCPT fails and DATA succeeds'
+echo test/dir/new/10000x | tr x '\0' \
+| serialsmtp Account- Host 7>test/client 6<test/smtprproto; echo $?
+cat test/client
+
+
+
+echo '--- maildirserial requires arguments'
+maildirserial test/dir prefix; echo $?
+
+echo '--- maildirserial gives up if it cannot read maildir'
+maildirserial test/nonexistent prefix sh -c 'echo wrong >&2'; echo $?
+
+echo '--- maildirserial skips messages without the prefix'
+maildirserial test/dir Wrong- sh -c 'echo wrong >&2'; echo $?
+
+echo '--- maildirserial runs client repeatedly on exit code 0'
+rm -f test/files
+maildirserial test/dir Account- sh -c 'cat >> ../files'; echo $?
+cat test/files; echo ''
+
+echo '--- maildirserial runs client repeatedly on exit code 111'
+rm -f test/files
+maildirserial test/dir Account- sh -c 'cat >> ../files; exit 111'; echo $?
+cat test/files; echo ''
+
+echo '--- maildirserial handles temporary failure'
+rm -f test/files
+touch test/first
+maildirserial test/dir Account- sh -c '
+  cat >> ../files
+  [ -f ../first ] && echo new/10000xZtemporary failure | tr x '\''\0'\''
+  rm -f ../first
+  '
+echo $?
+cat test/files; echo ''
+
+echo '--- maildirserial handles permanent failure'
+rm -f test/files
+touch test/first
+maildirserial test/dir Account- sh -c '
+  cat >> ../files
+  [ -f ../first ] && echo new/10000xDpermanent failure | tr x '\''\0'\''
+  rm -f ../first
+  '
+echo $?
+cat test/files; echo ''
+
+echo '--- maildirserial removes message on success'
+rm -f test/files
+touch test/first
+maildirserial test/dir Account- sh -c '
+  cat >> ../files
+  [ -f ../first ] && echo new/10000xKthanks | tr x '\''\0'\''
+  rm -f ../first
+  '
+echo $?
+cat test/files; echo ''
+ls test/dir/new
+
+
+
+exit 0

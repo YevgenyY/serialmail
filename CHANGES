@@ -1,0 +1,46 @@
+19981114 version: serialmail 0.75, beta.
+19981114 code: added a few regression tests.
+19981114 code: set up special error message for EOF in serialqmtp and
+         serialsmtp.
+19981114 doc: updated BLURB.
+19981114 code: added setlock.
+19981114 doc: added AUTOTURN.
+19981114 doc: added TOISP; removed section from maildirqmtp.0.
+19981114 doc: added FROMISP; removed section from maildirsmtp.0.
+19981112 code: switched from date822fmt to mess822_date and caltime.
+19981112 code: switched default compiler to gcc.
+19981112 code: switched to config library.
+19981112 code: updated maildirserial for the new qqx interface.
+19981112 code: reorganized PIPELINING in serialqmtp.c to print error
+         message for first command that failed.
+19981112 code: serialsmtp no longer waits after QUIT.
+19981112 doc: added reference to smtp web pages.
+19981112 code: changed to 3600-second timeoutread in serialqmtp.c. tnx
+         ARB.
+19981112 code: switched to new install system.
+19971030 doc: fixed typo in serialqmtp refs. tnx TG.
+19970813 code: integrated new timeoutread()/timeoutwrite() interface.
+19970811 serialmail 0.72, beta.
+19970811 bug: extra backslashes in maildirsmtp and maildirqmtp. impact:
+         maildirsmtp and maildirqmtp wouldn't run. fix: correct typos.
+	 tnx TG. sigh.
+19970811 serialmail 0.71, beta.
+19970811 bug: package was missing BIN, MAN. impact: couldn't install.
+         fix: include BIN, MAN. tnx JB. sigh.
+19970810 serialmail 0.70, beta.
+19970810 doc: moved maildirserial.0 example to maildirsmtp.0.
+19970810 code: added maildirsmtp, maildirqmtp scripts.
+19970810 code: added timeout warning to maildirserial bounce messages.
+19970810 portability problem: Solaris needs networking libraries for
+         shutdown(). impact: couldn't compile on Solaris. fix: include
+	 socket.lib.
+19970809 doc: fixed slip in BLURB.
+19970809 serialmail 0.55, alpha.
+19970808 code: thorough rewrite. tnx TG, MD, RDM, GA, CF.
+19961208 serialmail 0.51, alpha.
+19961208 change: maildir2smtp rejects messages with partial final lines.
+19961208 change: switched maildir2qmtp, maildir2smtp from signal to sig.
+19961208 bug: maildir2qmtp did not remove prefix. impact: when prefix
+         was nonempty, maildir2qmtp would send messages to the wrong
+	 place. fix: remove prefix. tnx LMB.
+19961127 serialmail 0.50, alpha.
